@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spend Elon Musk's Money</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+            width: 80%;
+            margin: auto;
+        }
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .money {
+            font-size: 2em;
+            margin: 20px 0;
+            color: green;
+        }
+        .item {
+            margin: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            display: inline-block;
+            width: 30%;
+            box-sizing: border-box;
+            border-radius: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .item img {
+            width: 100%;
+            border-radius: 5px;
+            height: auto;
+        }
+        .item h2 {
+            color: #444;
+        }
+        .item p {
+            font-size: 1.2em;
+        }
+        .item button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .item button:hover {
+            background-color: #0056b3;
+        }
+        .bulk-buy {
+            padding: 10px;
+            width: 60px;
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+        .sell-button {
+            background-color: #ff5733;
+        }
+        .sell-button:hover {
+            background-color: #d44d24;
+        }
+        .purchase-list {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .purchase-list li {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #444;
+        }
+        .purchase-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Spend Elon Musk's Money!</h1>
+    <div class="money">
+        <span id="money">$300,000,000,000</span>
+    </div>
+
+    <!-- Purchase Options -->
+    <div class="item">
+        <img src="big-mac.jpg" alt="Burger">
+        <h2>Buy a Burger</h2>
+        <p>Cost: $5</p>
+        <button onclick="buyItem(5, 'Burger')">Buy Burger</button>
+        <input type="number" class="bulk-buy" id="burger-quantity" placeholder="Qty" min="1" />
+        <button onclick="bulkBuy(5, 'Burger', document.getElementById('burger-quantity').value)">Bulk Buy</button>
+        <button class="sell-button" onclick="sellItem('Burger')">Sell Burger</button>
+    </div>
+
+    <div class="item">
+        <img src="coffee.png" alt="Coffee">
+        <h2>Buy a Coffee</h2>
+        <p>Cost: $3</p>
+        <button onclick="buyItem(3, 'Coffee')">Buy Coffee</button>
+        <input type="number" class="bulk-buy" id="coffee-quantity" placeholder="Qty" min="1" />
+        <button onclick="bulkBuy(3, 'Coffee', document.getElementById('coffee-quantity').value)">Bulk Buy</button>
+        <button class="sell-button" onclick="sellItem('Coffee')">Sell Coffee</button>
+    </div>
+
+    <div class="item">
+        <img src="watch.png" alt="Watch">
+        <h2>Buy a Watch</h2>
+        <p>Cost: $200</p>
+        <button onclick="buyItem(200, 'Watch')">Buy Watch</button>
+        <input type="number" class="bulk-buy" id="watch-quantity" placeholder="Qty" min="1" />
+        <button onclick="bulkBuy(200, 'Watch', document.getElementById('watch-quantity').value)">Bulk Buy</button>
+        <button class="sell-button" onclick="sellItem('Watch')">Sell Watch</button>
+    </div>
+
+    <div class="item">
+        <img src="headphones.png" alt="Headphones">
+        <h2>Buy Headphones</h2>
+        <p>Cost: $500</p>
+        <button onclick="buyItem(500, 'Headphones')">Buy Headphones</button>
+        <input type="number" class="bulk-buy" id="headphones-quantity" placeholder="Qty" min="1" />
+        <button onclick="bulkBuy(500, 'Headphones', document.getElementById('headphones-quantity').value)">Bulk Buy</button>
+        <button class="sell-button" onclick="sellItem('Headphones')">Sell Headphones</button>
+    </div>
+
+    <div class="item">
+        <img src="smartphone.jpg" alt="Smartphone">
+        <h2>Buy a Smartphone</h2>
+        <p>Cost: $1,000</p>
+        <button onclick="buyItem(1000, 'Smartphone')">Buy Smartphone</button>
+        <input type="number" class="bulk-buy" id="smartphone-quantity" placeholder="Qty" min="1" />
+        <button onclick="bulkBuy(1000, 'Smartphone', document.getElementById('smartphone-quantity').value)">Bulk Buy</button>
+        <button class="sell-button" onclick="sellItem('Smartphone')">Sell Smartphone</button>
+    </div>
+
+    <div class="item">
+        <img src="luxury watch.jpg" alt="Luxury Watch">
+        <h2>Buy a Luxury Watch</h2>
+        <p>Cost: $50,000</p>
+        <button onclick="buyItem(50000, 'Luxury Watch')">Buy Luxury Watch</button>
+        <input type="number" class="bulk-buy" id="luxury-watch-quantity" placeholder="Qty" min="1" />
+        <button onclick="bulkBuy(50000, 'Luxury Watch', document.getElementById('luxury-watch-quantity').value)">Bulk Buy</button>
+        <button class="sell-button" onclick="sellItem('Luxury Watch')">Sell Luxury Watch</button>
+    </div>
+
+    <div class="item">
+        <img src="luxury bag.jpg" alt="Luxury Bag">
+        <h2>Buy a Luxury Bag</h2>
+        <p>Cost: $20,000</p>
+        <button onclick="buyItem(20000, 'Luxury Bag')">Buy Luxury Bag</button>
+        <input type="number" class="bulk-buy" id="luxury-bag-quantity" placeholder="Qty" min="1" />
+        <button onclick="bulkBuy(20000, 'Luxury Bag', document.getElementById('luxury-bag-quantity').value)">Bulk Buy</button>
+        <button class="sell-button" onclick="sellItem('Luxury Bag')">Sell Luxury Bag</button>
+    </div>
+
+    <div class="item">
+        <img src="luxury car.jpg" alt="Luxury Car">
+        <h2>Buy a Luxury Car</h2>
+        <p>Cost: $250,000</p>
+        <button onclick="buyItem(250000, 'Luxury Car')">Buy Luxury Car</button>
+        <input type="number" class="bulk-buy" id="luxury-car-quantity" placeholder="Qty" min="1" />
+        <button onclick="bulkBuy(250000, 'Luxury Car', document.getElementById('luxury-car-quantity').value)">Bulk Buy</button>
+        <button class="sell-button" onclick="sellItem('Luxury Car')">Sell Luxury Car</button>
+    </div>
+
+    <div class="item">
+        <img src="yacht.jpg" alt="Yacht">
+        <h2>Buy a Yacht</h2>
+        <p>Cost: $10,000,000</p>
+        <button onclick="buyItem(10000000, 'Yacht')">Buy Yacht</button>
+        <input type="number" class="bulk-buy" id="yacht-quantity" placeholder="Qty" min="1" />
+        <button onclick="bulkBuy(10000000, 'Yacht', document.getElementById('yacht-quantity').value)">Bulk Buy</button>
+        <button class="sell-button" onclick="sellItem('Yacht')">Sell Yacht</button>
+    </div>
+
+    <div class="item">
+        <img src="privatejet.jpg" alt="Private Jet">
+        <h2>Buy a Private Jet</h2>
+        <p>Cost: $100,000,000</p>
+        <button onclick="buyItem(100000000, 'Private Jet')">Buy Private Jet</button>
+        <input type="number" class="bulk-buy" id="jet-quantity" placeholder="Qty" min="1" />
+        <button onclick="bulkBuy(100000000, 'Private Jet', document.getElementById('jet-quantity').value)">Bulk Buy</button>
+        <button class="sell-button" onclick="sellItem('Private Jet')">Sell Private Jet</button>
+    </div>
+
+    <div class="item">
+        <img src="spacetour.png" alt="Space Tour">
+        <h2>Book a Space Tour</h2>
+        <p>Cost: $500,000,000</p>
+        <button onclick="buyItem(500000000, 'Space Tour')">Book Space Tour</button>
+        <input type="number" class="bulk-buy" id="space-tour-quantity" placeholder="Qty" min="1" />
+        <button onclick="bulkBuy(500000000, 'Space Tour', document.getElementById('space-tour-quantity').value)">Bulk Buy</button>
+        <button class="sell-button" onclick="sellItem('Space Tour')">Sell Space Tour</button>
+    </div>
+
+    <div class="item">
+        <img src="island.png" alt="Private Island">
+        <h2>Buy a Private Island</h2>
+        <p>Cost: $1,000,000,000</p>
+        <button onclick="buyItem(1000000000, 'Private Island')">Buy Private Island</button>
+        <input type="number" class="bulk-buy" id="private-island-quantity" placeholder="Qty" min="1" />
+        <button onclick="bulkBuy(1000000000, 'Private Island', document.getElementById('private-island-quantity').value)">Bulk Buy</button>
+        <button class="sell-button" onclick="sellItem('Private Island')">Sell Private Island</button>
+    </div>
+
+    <div class="item">
+        <img src="marsbase.png" alt="Mars Base">
+        <h2>Buy a Mars Base</h2>
+        <p>Cost: $5,000,000,000</p>
+        <button onclick="buyItem(5000000000, 'Mars Base')">Buy Mars Base</button>
+        <input type="number" class="bulk-buy" id="mars-base-quantity" placeholder="Qty" min="1" />
+        <button onclick="bulkBuy(5000000000, 'Mars Base', document.getElementById('mars-base-quantity').value)">Bulk Buy</button>
+        <button class="sell-button" onclick="sellItem('Mars Base')">Sell Mars Base</button>
+    </div>
+
+    <div class="purchase-list">
+        <h2>Purchases</h2>
+        <ul id="purchases">
+            <!-- Purchases will be listed here -->
+        </ul>
+    </div>
+</div>
+
+<script>
+    let money = 300000000000; // Starting amount
+    let purchases = {}; // Track purchases
+
+    function updateMoney() {
+        document.getElementById("money").textContent = "$" + money.toLocaleString();
+    }
+
+    function buyItem(cost, item) {
+        if (money >= cost) {
+            money -= cost;
+
+            if (purchases[item]) {
+                purchases[item].count += 1;
+                purchases[item].totalCost += cost;
+            } else {
+                purchases[item] = { count: 1, totalCost: cost };
+            }
+
+            updateMoney();
+            updatePurchases();
+        } else {
+            alert("Not enough money to buy " + item);
+        }
+    }
+
+    function bulkBuy(cost, item, quantity) {
+        if (quantity && quantity > 0) {
+            let totalCost = cost * quantity;
+            if (money >= totalCost) {
+                money -= totalCost;
+
+                if (purchases[item]) {
+                    purchases[item].count += parseInt(quantity);
+                    purchases[item].totalCost += totalCost;
+                } else {
+                    purchases[item] = { count: parseInt(quantity), totalCost: totalCost };
+                }
+
+                updateMoney();
+                updatePurchases();
+            } else {
+                alert("Not enough money to bulk buy " + quantity + " of " + item);
+            }
+        } else {
+            alert("Please enter a valid quantity.");
+        }
+    }
+
+    function sellItem(item) {
+        if (purchases[item]) {
+            let itemCost = purchases[item].totalCost;
+            let refundAmount = itemCost * 0.5;  // Sell item for 50% of its cost
+            money += refundAmount;
+
+            purchases[item].count -= 1;
+            purchases[item].totalCost -= (itemCost / purchases[item].count);
+
+            if (purchases[item].count <= 0) {
+                delete purchases[item];
+            }
+
+            updateMoney();
+            updatePurchases();
+        } else {
+            alert("You don't own this item.");
+        }
+    }
+
+    function updatePurchases() {
+        let purchasesList = document.getElementById("purchases");
+        purchasesList.innerHTML = ''; // Clear the current list
+
+        for (let item in purchases) {
+            let purchase = purchases[item];
+            let listItem = document.createElement("li");
+            listItem.textContent = `${item} x${purchase.count} - $${purchase.totalCost.toLocaleString()}`;
+            purchasesList.appendChild(listItem);
+        }
+    }
+
+    updateMoney();  // Initialize the display
+</script>
+
+</body>
+</html>
